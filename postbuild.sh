@@ -1,10 +1,9 @@
 #!/bin/bash
 set -e
 
-echo "------------------------------------------------"
-echo `pwd`
-echo "------------------------------------------------"
-
+# Note, this step is needed because students will fork the repo
+# and the directory name will change from hwrs564b_course_materials
+# to hwrs564b_course_materials_<their_github_username> or similar.
 cd_prefix="./hwrs564b_course_*"
 dirs=( $cd_prefix )
 if [ ${#dirs[@]} -eq 1 ] && [ -d "${dirs[0]}" ]; then
@@ -12,11 +11,6 @@ if [ ${#dirs[@]} -eq 1 ] && [ -d "${dirs[0]}" ]; then
 else
     echo "Error: expected exactly one directory matching $cd_prefix, found ${#dirs[@]}"
 fi
-
-
-echo "------------------------------------------------"
-echo `pwd`
-echo "------------------------------------------------"
 
 # Create/update conda environment from environment.yml
 echo "Creating/updating conda environment..."
